@@ -1,0 +1,21 @@
+from enum import Enum, auto
+
+class Skills(Enum):
+    Perception = auto()
+    Investigation = auto()
+    Athletics = auto()
+    Acrobatics = auto()
+    Stealth = auto()
+    SlightOfHand = auto()
+    Insight = auto()
+    Deception = auto()
+    Persuasion = auto()
+    Intimidation = auto()
+    Performance = auto()
+    Medicine = auto()
+    Nature = auto()
+    Arcana = auto()
+    History = auto()
+    Religion = auto()
+    Survival = auto()
+    AnimalHandling = auto()
