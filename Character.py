@@ -8,36 +8,41 @@ class Character:
 
 
     def isProficient(self, skill):
-        for k in self.Proficiencies:
-            if k == skill:
-                return True
-        return 
+            return skill in self.Proficiencies
     
     def isExpert(self, skill):
-        for k in self.Expertise:
-            if k == skill:
-                return True
-        return
+            return skill in self.Expertise
 
     
 
     @classmethod
     def fromJson(cls):
         '''Takes a JSON object, parses it and returns a character object'''
-        character = Character()
+        
         json_file='character.json'
         json_data=open(json_file)
         data = json.load(json_data)
-        character.Name = data["Name"]
-        character.Strength = data["stats"]["Strength"]
-        character.Dexterity = data["stats"]["Dexterity"]
-        character.Constitution = data["stats"]["Constitution"]
-        character.Wisdom = data["stats"]["Wisdom"]
-        character.Intelligence = data["stats"]["Intelligence"]
-        character.Charisma = data["stats"]["Charisma"]
-        character.Proficiencies = set(data['isProficient'])
-        character.Expertise = set(data['isExpert'])        
-        return character
+        characterList = []
+        for k in data:
+            character = Character()
+            character.Name = k["Name"]
+            character.Strength = k["Stats"]["Strength"]
+            character.Dexterity = k["Stats"]["Dexterity"]
+            character.Constitution = k["Stats"]["Constitution"]
+            character.Wisdom = k["Stats"]["Wisdom"]
+            character.Intelligence = k["Stats"]["Intelligence"]
+            character.Charisma = k["Stats"]["Charisma"]
+            character.Proficiencies = set(k['isProficient'])
+            character.Expertise = set(k['isExpert'])
+            characterList.append(character)
+        return characterList
+
+    def getCharacter(self,name):
+        fromJson()
+        for k in :
+            if k.name == name:
+                return k
+        return  
 
 
 
@@ -47,7 +52,7 @@ class Character:
 if __name__ == '__main__':
     print('You can test things out here.')
     print('Try running \"python Character.py\" from the right location in a cmd prompt')
-    Alice = Character.fromJson()
+    Alice = Character.getCharacter("Alice")
     print(Alice.Name)
     print(Alice.Expertise)
     print(Alice.isExpert("Religion"))

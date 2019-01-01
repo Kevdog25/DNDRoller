@@ -1,16 +1,28 @@
-{    
-    "Name": "Alice",
-    "stats":
-    {   
-        "Strength": 10,
-        "Dexterity": 10,
-        "Constitution": 10,
-        "Wisdom": 10,
-        "Intelligence": 10,
-        "Charisma": 10
+[
+    {
+        "Name": "Alice",
+        "Stats": {   
+            "Strength": 10,
+            "Dexterity": 10,
+            "Constitution": 10,
+            "Wisdom": 10,
+            "Intelligence": 10,
+            "Charisma": 10
+        },
+        "isProficient": ["Performance","Deception"],
+        "isExpert": ["History","Investigation","Religion"]
     },
-    "isProficient": ["Performance","Deception"],
-    "isExpert": ["History","Investigation","Religion"]
-
-
-}  
+    {
+        "Name": "Kevin",
+        "Stats": {   
+            "Strength": 10,
+            "Dexterity": 10,
+            "Constitution": 10,
+            "Wisdom": 10,
+            "Intelligence": 10,
+            "Charisma": 10
+        },
+        "isProficient": ["Acrobatics","AnimalHandling"],
+        "isExpert": ["Perception","Persuasion","Arcana"]
+    }
+]
