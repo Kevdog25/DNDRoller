@@ -1,5 +1,6 @@
 import random
 import json
+from Skills import Skills
 
 class Character:
     def __init__(self):
@@ -16,10 +17,10 @@ class Character:
     
 
     @classmethod
-    def fromJson(cls):
+    def fromJson(cls,json_file):
         '''Takes a JSON object, parses it and returns a character object'''
         
-        json_file='character.json'
+        #json_file='character.json'
         json_data=open(json_file)
         data = json.load(json_data)
         characterList = []
@@ -32,28 +33,38 @@ class Character:
             character.Wisdom = k["Stats"]["Wisdom"]
             character.Intelligence = k["Stats"]["Intelligence"]
             character.Charisma = k["Stats"]["Charisma"]
-            character.Proficiencies = set(k['isProficient'])
-            character.Expertise = set(k['isExpert'])
+            #character.Proficiencies = set(k['isProficient'])
+            character.Proficiencies = []
+            for p in list(k['isProficient']):
+                character.Proficiencies.append(getEnum(p))
+            character.Expertise = []
+            for e in list(k['isExpert']):
+                character.Expertise.append(getEnum(e))
             characterList.append(character)
         return characterList
 
-    def getCharacter(self,name):
-        fromJson()
-        for k in :
-            if k.name == name:
-                return k
-        return  
-
-
-
-
+def getEnum(name):
+    for s in Skills:
+        if name == s.name:
+            return s
 
 
 if __name__ == '__main__':
     print('You can test things out here.')
     print('Try running \"python Character.py\" from the right location in a cmd prompt')
-    Alice = Character.getCharacter("Alice")
-    print(Alice.Name)
-    print(Alice.Expertise)
-    print(Alice.isExpert("Religion"))
-    print(Alice.Proficiencies)
+    #Alice = Character.getCharacter("Alice")
+    characterList = Character.fromJson('character.json')
+    for c in characterList:
+        print(c.Name)
+        print('Proficiencies:')
+        for s in Skills:
+            print(f'\t{s.name} : {c.isProficient(s)}')
+        print()
+        print(c.Proficiencies)
+        print(c.Expertise)
+
+    
+    #print(Alice.Name)
+    #print(Alice.Expertise)
+    #print(Alice.isExpert("Religion"))
+    #print(Alice.Proficiencies)
