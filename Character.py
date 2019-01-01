@@ -36,10 +36,10 @@ class Character:
             #character.Proficiencies = set(k['isProficient'])
             character.Proficiencies = []
             for p in list(k['isProficient']):
-                character.Proficiencies.append(getEnum(p))
+                character.Proficiencies.append(Skills[p])
             character.Expertise = []
             for e in list(k['isExpert']):
-                character.Expertise.append(getEnum(e))
+                character.Expertise.append(Skills[e])
             characterList.append(character)
         return characterList
 
