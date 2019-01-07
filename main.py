@@ -1,17 +1,26 @@
-from SkillCheckTable import SkillCheckTable
-from ScreenManager.Window import getScreenSize
-from ScreenManager import Box, ScreenManager
-import os
+from eel import eel
+import time
+import numpy as np
+from Skills import Skills
+import Rolls
 
 
-class character():
-    def __init__(self):
-        self.Name = 'Name'
+Characters = []
 
-if __name__ == '__main__':
-    os.system('mode con lines=55 cols=120')
-    manager = ScreenManager()
-    characters = [character() for i in range(3)]
-    skillCheckTable = SkillCheckTable(characters, x = 0, y = 0, width = 56, height = 54)
-    manager.addBox(skillCheckTable)
-    manager.run()
+@eel.expose
+def rollSkillChecks():
+    rolls = {}
+    for c in Characters:
+        c_rolls = {}
+        for s in Skills:
+            c_rolls[s.name] = Rolls.skillCheck(s, c)
+        rolls[c.Name] = c_rolls
+    return rolls
+
+@eel.expose
+def reloadCharacters():
+    return
+
+if __name__=='__main__':
+    e = eel('Web')
+    eel.start('Home.html')
