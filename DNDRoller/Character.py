@@ -1,5 +1,5 @@
 import json
-from Skills import Skills
+from DNDRoller.Skills import Skills
 
 class Character:
     def __init__(self):
@@ -15,7 +15,7 @@ class Character:
     def fromJson(cls, json_file):
         '''Takes a JSON object, parses it and returns a character object'''
         with open(json_file, 'r') as fin:
-            data = json.load(json_data)
+            data = json.load(fin)
         characterList = []
         for k in data:
             character = Character()

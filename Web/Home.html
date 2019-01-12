@@ -1,15 +1,23 @@
 <HTML>
+    <link rel="stylesheet" href="Style.css">
     <script src="eel.js"></script>
     <script src="HomeController.js?version=">
         var s = document.createElement('script')
         s.src = "HomeController.js?version=" + Math.random();
         s.type = 'text/javascript'
         document.appendChild(s)
+        s = document.createElement('link')
+        s.rel = 'stylesheet'
+        s.href = 'Style.css'
+        document.appendChild(s)
     </script>
     <HEAD>
         <TITLE>DND Roller</TITLE>
     </HEAD>
     <BODY>
-        
+        <div id = "page">
+            <table id = "skillTable">
+            </table>
+        </div>
     </BODY>
 </HTML>

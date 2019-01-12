@@ -1,5 +1,5 @@
-from Skills import Skills
-from Stats import Stats
+from DNDRoller.Skills import Skills
+from DNDRoller.Stats import Stats
 import sys
 import random
 
